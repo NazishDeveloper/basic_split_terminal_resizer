@@ -11,6 +11,8 @@ You can also resize manually by creating shortcuts for commands
 
     1. terminalResizer.resizeRight
     2. terminalResizer.resizeLeft
+    1. terminalResizer.resizeTop
+    2. terminalResizer.resizeBottom
 
 ## Shortcomings
 

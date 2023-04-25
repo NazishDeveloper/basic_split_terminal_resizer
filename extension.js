@@ -16,21 +16,21 @@ function resizeTerminal(command) {
 	for (let i = 0; i < resizeAmount - 1; i++) {
 		setTimeout(() => {
 			vscode.commands.executeCommand(command);
-		}, 50 * (i + 1));
+		}, 20 * (i + 1));
 	}
 }
 
 
 function activate(context) {
 
-	const resizeAmountManual = 8;
 
-	function resizeTerminalManual(command) {
+	function resizeTerminalManual(command, axis) {
+		const resizeAmountManual = axis === 'x' ? 8 : 4;
 		vscode.commands.executeCommand(command);
 		for (let i = 0; i < resizeAmountManual - 1; i++) {
 			setTimeout(() => {
 				vscode.commands.executeCommand(command);
-			}, 50 * (i + 1));
+			}, 20 * (i + 1));
 		}
 	}
 
@@ -73,13 +73,25 @@ function activate(context) {
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand('terminalResizer.resizeRight', () => {
-			resizeTerminalManual('workbench.action.terminal.resizePaneRight');
+			resizeTerminalManual('workbench.action.terminal.resizePaneRight', 'x');
+		})
+	);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand('terminalResizer.resizeUp', () => {
+			resizeTerminalManual('workbench.action.terminal.resizePaneUp', 'y');
+		})
+	);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand('terminalResizer.resizeDown', () => {
+			resizeTerminalManual('workbench.action.terminal.resizePaneDown', 'y');
 		})
 	);
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand('terminalResizer.resizeLeft', () => {
-			resizeTerminalManual('workbench.action.terminal.resizePaneLeft');
+			resizeTerminalManual('workbench.action.terminal.resizePaneLeft', 'x');
 		})
 	);
 

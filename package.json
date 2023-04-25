@@ -20,6 +20,14 @@
         "title": "Resize Terminal Right"
       },
       {
+        "command": "terminalResizer.resizeDown",
+        "title": "Resize Terminal Down"
+      },
+      {
+        "command": "terminalResizer.resizeUp",
+        "title": "Resize Terminal Up"
+      },
+      {
         "command": "terminalResizer.resizeLeft",
         "title": "Resize Terminal Left"
       }
